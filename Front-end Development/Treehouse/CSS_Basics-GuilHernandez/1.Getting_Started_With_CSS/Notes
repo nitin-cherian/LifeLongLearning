@@ -20,3 +20,33 @@
 
       -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.3. Importing Style Sheets with @import
  
+4. Universal selector
+   
+   -- The universal selector targets every element at once and applies the styles we set.
+   
+   -- * {
+        margin: 0;
+        padding: 0;
+      }
+
+5. Type selector
+
+   -- Targets a particulat html element or type.
+
+6. ID selector
+
+   -- declared using pound(#) symbol, followed by ID name.
+
+   #primary-content {
+     background: grey;
+   }
+
+   This selector will matach the HTML element with an ID attribute with the valud primary-content.
+
+   -- IDs are unique to the page, so an element can only have one ID and a page can only have one element with same ID name. 
+
+   -- What are fragment identifiers? https://en.wikipedia.org/wiki/Fragment_identifier
+
+7. Class selector
+
+   -- define with . character followed by the class name.

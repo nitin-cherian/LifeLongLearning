@@ -1,0 +1,37 @@
+body {
+  color: #878787;
+  margin: 0;
+}
+
+.main-header {
+  background-color: orange;
+}
+
+h1 {
+  color: white;
+  font-size: 90px;
+}
+
+h2 {
+  font-size: 53px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #48525c;
+}
+
+.primary-content {
+  text-align: center;
+}
+
+.secondary-content {
+  border-top: 2px solid lightgrey;
+}
+
+#main-footer {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  border-bottom: 10px solid orange;
+}
+
