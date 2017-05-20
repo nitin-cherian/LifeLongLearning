@@ -19,11 +19,4 @@
    -- @import 'reset-styles.css';
 
       -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.3. Importing Style Sheets with @import
-
-   -- @import 'reset-styles.css';
-
-      -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.3. Importing Style Sheets with @import
-
-   -- @import 'reset-styles.css';
-
-      -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.
+ 
