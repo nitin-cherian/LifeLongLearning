@@ -1,0 +1,29 @@
+1. CSS Resources
+
+   -- Helpful resources for learning and staying up-to-date with CSS.
+
+      -- MDN (https://developer.mozilla.org/en-US/docs/Web/CSS)
+      -- Webplatform.corg (https://www.webplatform.org/docs/css/)
+      -- W3C (https://www.w3.org/Style/CSS/Overview.en.html)
+      -- Can I Use (http://caniuse.com/)
+
+2. Linking to an external style sheet
+
+   -- <link rel="stylesheet" href="css/style.css">
+     
+      -- The 'rel' attribute specifies the relationship between the HTML document and the linked document.
+      -- The 'href' attribute points to the location of the CSS file.
+
+3. Importing Style Sheets with @import
+
+   -- @import 'reset-styles.css';
+
+      -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.3. Importing Style Sheets with @import
+
+   -- @import 'reset-styles.css';
+
+      -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.3. Importing Style Sheets with @import
+
+   -- @import 'reset-styles.css';
+
+      -- The @import statement must precede all other CSS rules in a stylesheet in order for it to work properly.
