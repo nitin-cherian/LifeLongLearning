@@ -68,12 +68,12 @@ def get_words(part, num):
     if num > len(part):
         raise ValueError('Too many words asked than available for part {}'.format(part))
 
-    nouns = [random.choice(part) for n in range(num)]
+    words = [random.choice(part) for n in range(num)]
 
-    while len(set(nouns)) != num:
-        nouns = [random.choice(part) for n in range(num)]
+    while len(set(words)) != num:
+        words = [random.choice(part) for n in range(num)]
 
-    return nouns
+    return words
 
 
 def make_poem():
