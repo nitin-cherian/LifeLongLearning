@@ -50,3 +50,28 @@
 7. Class selector
 
    -- define with . character followed by the class name.
+
+8. Reusing classes
+
+   -- Sometimes we may have lot of CSS repeated in our stylesheets. In those cases create a class and put the commoon CSS in it.
+   -- Space-separate each class name in the class attribute
+
+      -- <div class="primary-content t-border rounded">
+
+9. Using ID selector and class selector on the same element
+
+   -- ID selector carries more weight and it overrides the same property in the class selector.
+
+10. Descendant selector
+    
+    -- Can combine selectors to create descendant selectors which targets elements that are descendants of an element. This makes the selector more specific
+
+    -- To create a descendant selector we need to use two or more selectors separated by white spaces.
+
+    .main-header span {
+     font-size: 26px;
+    }
+
+    ul li {
+    margin-bottom: 12px;
+    }
