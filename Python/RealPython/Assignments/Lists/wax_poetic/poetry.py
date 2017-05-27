@@ -55,6 +55,7 @@ VERBS = ["kicks", "jingles", "bounces", "slurps", "meows", "explodes", "curdles"
 ADJECTIVES = ["furry", "balding", "incredulous", "fragrant", "exuberant", "glistening"]
 PREPOSITIONS = ["against", "after", "into", "beneath", "upon", "for", "in", "like", "over", "within"]
 ADVERBS = ["curiously", "extravagantly", "tantalizingly", "furiously", "sensuously"]
+VOWELS = tuple('a e i o u'.split())
 
 
 def get_words(part, num):
@@ -87,14 +88,15 @@ def make_poem():
     adjective1, adjective2, adjective3 = get_words(ADJECTIVES, 3)
     preposition1, preposition2 = get_words(PREPOSITIONS, 2)
     adverb1, = get_words(ADVERBS, 1)
+    a_or_an = "An" if adjective1.startswith(VOWELS) else "A"
 
     return """
-    A {adjective1} {noun1}
+    {A_or_An} {adjective1} {noun1}
     
-    A {adjective1} {noun1} {verb1} {preposition1} the {adjective2} {noun2}
+    {A_or_An} {adjective1} {noun1} {verb1} {preposition1} the {adjective2} {noun2}
     {adverb1}, the {noun1} {verb2}
     the {noun2} {verb3} {preposition2} a {adjective3} {noun3}
-    """.format(noun1=noun1, noun2=noun2, noun3=noun3,
+    """.format(A_or_An=a_or_an, noun1=noun1, noun2=noun2, noun3=noun3,
                verb1=verb1, verb2=verb2, verb3=verb3,
                adjective1=adjective1, adjective2=adjective2, adjective3=adjective3,
                preposition1=preposition1, preposition2=preposition2,
