@@ -75,3 +75,21 @@
     ul li {
     margin-bottom: 12px;
     }
+
+11. Pseudo selector
+
+    -- keywords that are added to selectors to style a special state of an element.
+
+    -- The :link pseudo-class targets links that have not been visited by the user:
+
+    a:link {
+      color: orange;
+    }
+
+    -- The :visited pseudo-class targets links that have been visited –– or clicked –– by the user
+
+    -- The :hover pseudo-class targets an element when a user hovers over it
+
+    -- The :active pseudo-class gets applied when an element is in an active state
+
+    -- The :focus pseudo-class is only applied to interactive elements like links, buttons and form elements. The styles are applied as soon as the element receives focus
