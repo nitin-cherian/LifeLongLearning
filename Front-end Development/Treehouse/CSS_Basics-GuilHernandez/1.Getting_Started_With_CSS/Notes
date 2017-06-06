@@ -93,3 +93,9 @@
     -- The :active pseudo-class gets applied when an element is in an active state
 
     -- The :focus pseudo-class is only applied to interactive elements like links, buttons and form elements. The styles are applied as soon as the element receives focus
+
+12. Using CSS Comments
+
+    -- Comments in CSS starts with forward-slash followed by asterix and ends with asterix followed by forward-slash
+
+    -- /*  CSS Comment. This applies to single line as well as multiline */

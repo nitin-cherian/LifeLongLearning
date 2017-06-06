@@ -1,0 +1,21 @@
+1. A good reference for CSS datatypes
+
+  -- https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type
+
+2. Pixel units
+
+  -- if used, the size will remain the same irrespective of the browser window and size of the screen.
+
+  -- however, pixels(px) are relative to the viewing device. 
+     -- 1px is 1 device pixel for low resolution devices and multiple device pixels for high resolution devices.
+  
+  -- References:
+     https://www.w3schools.com/cssref/css_units.asp
+     http://inamidst.com/stuff/notes/csspx
+     https://developer.mozilla.org/en-US/docs/Web/CSS/length
+
+  -- .main-header {
+      width: 960px;
+    }
+
+    main-header will always take up 960px of the screen.
