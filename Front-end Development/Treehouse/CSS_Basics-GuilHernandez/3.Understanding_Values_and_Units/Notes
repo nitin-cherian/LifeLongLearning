@@ -19,3 +19,16 @@
     }
 
     main-header will always take up 960px of the screen.
+
+3. Percentage units
+
+  -- Number values can be expressed more fluidly using percentages.
+
+  -- Percentage value is measured relative to the parent element's length.
+
+
+  .main-header {
+    width: 75%;
+    }
+
+
