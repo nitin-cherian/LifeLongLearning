@@ -1,0 +1,7 @@
+Discusses 5 underscore patterns in Python:
+
+1. Single leading underscore: _var
+2. Single trailing underscore: var_
+3. Double leading underscore: __var
+4. Double leading and trailing underscore: __var__
+5. Single underscore: _
