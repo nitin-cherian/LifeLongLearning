@@ -1,0 +1,114 @@
+7.2 Understanding Attribute Access
+==================================
+
+1. Only 3 operations can be done on an instance of a class in Python object model
+
+   -- lookup an attribute
+    >>> h = Holding('AA', '2016-11-12', 100, 53.5)
+    >>> h
+    <__main__.Holding instance at 0x7fa96fbb5098>
+    >>> h.name
+    'AA'
+    >>> h.shares
+    100
+    >>> h.date
+    '2016-11-12'
+
+   -- set an attribute
+    >>> h.shares = 20
+    >>> h.shares
+    20
+    >>> h.price = 67.9
+    >>> h.price
+    67.9
+
+   -- delete an attribute
+   >>> del h.price
+    >>> h.price
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    AttributeError: Holding instance has no attribute 'price'
+
+2. Python does not care about creating a new attribute at runtime
+
+    >>> h
+    <__main__.Holding instance at 0x7fa96fbb5098>
+    >>> h.__dict__
+    {'date': '2016-11-12', 'prices': 78.5, 'name': 'AA', 'shares': 20}
+    >>> h.time = "10:30am"
+    >>> h.__dict__
+    {'name': 'AA', 'shares': 20, 'prices': 78.5, 'time': '10:30am', 'date': '2016-11-12'}
+
+    This may lead to some problems like so:
+    >>> h
+    <__main__.Holding instance at 0x7fa96fbb5098>
+    >>> h.__dict__
+    {'date': '2016-11-12', 'prices': 78.5, 'name': 'AA', 'shares': 20}
+    >>> h.time = "10:30am"
+    >>> h.__dict__
+    {'name': 'AA', 'shares': 20, 'prices': 78.5, 'time': '10:30am', 'date': '2016-11-12'}
+
+    used 'share' in place for 'shares' and all of a sudden you have another attribute.
+
+3.  The methods of an instance also has the same rules:
+
+    >> h = Holding('AA', '2016-11-12', 100, 53.5)
+    >>> h.__dict__
+    {'date': '2016-11-12', 'price': 53.5, 'name': 'AA', 'shares': 100}
+    >>> h.cost()
+    5350.0
+    >>> c = h.cost
+    >>> c
+    <bound method Holding.cost of <__main__.Holding instance at 0x7fa96fbc1e18>>
+    >>> c()
+    5350.0
+    >>> s = h.sell
+    >>> s(20)
+    >>> h.shares
+
+4. getattr, setattr - functions used to access attribute
+
+    >>> getattr(h, 'name')
+    'AA'
+    >>> getattr(h, 'price')
+    53.5
+    >>> setattr(h, 'shares', 24)
+    >>> h.shares
+    24
+
+    -- Allows general purpose things: Given a a list of columns and it returns the values of the columns.
+       -- can pick the attributes, order of attributes etc.
+
+    >>> h = Holding('AA', '2017-09-10', 89, 56.4)
+    >>>
+    >>> h
+    <__main__.Holding object at 0x7fc9dc57b4e0>
+    >>> h.shares
+    89
+    >>> output_column = ['name', 'shares', 'date', 'price']
+    >>> for column in output_column:
+    ...    print(column, " = ", getattr(h, column))
+    ...
+    name  =  AA
+    shares  =  89
+    date  =  2017-09-10
+    price  =  56.4
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
