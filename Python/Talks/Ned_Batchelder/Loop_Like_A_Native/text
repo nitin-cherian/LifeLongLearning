@@ -1,0 +1,3 @@
+This project is based on the talk Ned gave in Pycon.
+Python provides powerful primitives for iterating over your data in ways that let you express yourself clearly and directly.
+But even programmers familiar with the tools don't use them as fully as they could.
