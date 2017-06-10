@@ -77,4 +77,27 @@
       The h1 font-size is relative to the default 16px font-size of the root <html> element.
 
 
+6. Color values
 
+   -- Quick reference: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+
+   -- Common color values:
+
+      --  Hexadecimal value:
+
+          .main-header {
+            background-color: #ff0033;
+          }
+
+      -- RGB value:
+
+          a:link {
+            color: rgb(255, 169, 73);
+          }
+
+
+      -- RGBa value:
+
+         a:hover {
+           color: rgba(255, 169, 72, .4);
+         }
