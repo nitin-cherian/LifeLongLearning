@@ -31,4 +31,50 @@
     width: 75%;
     }
 
+4. Em units
+
+   -- body {
+        font-size: 1em;
+      }
+
+      This is equivalent to 
+
+      body {
+        font-size: 16px;
+      }
+
+   -- converting pixels to ems
+
+      -- divide the elements pixel value by the parent element's font-size
+       eg:
+
+       .intro {
+          font-size: 24px;
+       }
+
+       parent of .intro is body which has font-size 16px. So 24px/ 16px = 1.5 
+
+       .intro {
+          font-size: 1.5em;
+       }
+
+       -- px to em calculator: http://pxtoem.com/
+
+       -- has compounding effect
+
+5. Rem units
+
+   -- root em(rem), similar to em
+
+   -- but relative not to the parent but to the root element
+
+   -- gets us around the compounding effect in the case of em units
+
+   -- h1 {
+        font-size: 5.625em;
+      }
+
+      The h1 font-size is relative to the default 16px font-size of the root <html> element.
+
+
 
