@@ -101,3 +101,87 @@
          a:hover {
            color: rgba(255, 169, 72, .4);
          }
+
+7. Text Styles
+
+   -- Common text styles
+
+      -- text-align - Control the horizontal alignment of text
+
+      -- text-transform - changes the case of text - uppercase, lowercase or capitalized
+
+      -- text-decoration - decoration of elements - usually used to remove underlines from links.
+
+      -- font-weight - controls how thick or thin the font of the element is (normal, bold).
+      
+8. Font Properties
+
+   -- Allows to change the appearance of text by assigning a font family, font size, font style and more.
+
+   -- CSS Font Stack:
+
+      -- Prioritized list of fonts that the browser will cycle through until it finds a font installed on the user's system.
+
+   -- Font properties:
+
+      -- font-family: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
+
+         -- defines a type-face for the text.
+
+      -- font-style: https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
+
+         -- allows italic or oblique faces to be selected from within a font family.
+
+   -- Font stack generator for web safe fonts: http://www.cssfontstack.com/
+
+   -- line-height
+
+      -- increase or decrase vertical space between lines of text.
+
+      -- normally set in the body element to set the overall line-height of the page.
+
+      -- body {
+
+           line-height: 1.5;
+         }
+
+         it is best to use the unit less value as above than using px or relative units.
+
+      -- is dependant on the font-size
+
+         -- browser multiples the font-size valu by line-height value to determine the line-height.
+
+      -- font property: https://developer.mozilla.org/en-US/docs/Web/CSS/font?v=example
+
+         -- short-hand property that lets us write font properties in one line
+
+         -- body {
+              color: #878787;
+              margin: 0;
+              font-size: 1em; /* 16px */
+              font-family: "Helvitca Neue", Helvetica, Arial, sans-serif;
+              line-height: 1.5;
+            }
+
+            this can be written using font short-hand property like so:
+
+            body {
+              color: #878787;
+              margin: 0;
+              font: normal 1em/1.5 "Helvitca Neue", Helvetica, Arial, sans-serif;
+              /* font: font-weight font-size/line-height font-family; */
+            }  
+
+            Rules for using font shot-hand:
+
+            -- font-size and font-family must be defined. If omitted, the entire line is ignored by browser.
+
+            -- font-style, font-weight values have to be defined before the font-size value.
+
+            -- any optional rules will be set to browser's default value.
+
+            -- font-family must be the last value defined.
+
+            -- since 'normal' is the default font-weight, it can be removed.
+
+
