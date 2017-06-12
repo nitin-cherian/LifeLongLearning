@@ -94,7 +94,39 @@
     date  =  2017-09-10
     price  =  56.4
 
-    
+5.  Alternate constructor - @classmethod
+
+    - Sometimes it is required to have a different method of constructing an instance of a class
+
+    - A class can have only 1 __init__ method.
+
+    - Rather than using a function that is detached from the class, @classmethod can be used.
+
+    - The first parameter of the @classmethod holds the name of the class.
+
+    - All the necessary operations can be done first in this method and alternate construction can be done using the
+      name of the class.
+
+    - Another advantage of @classmethod is the first parameter 'cls'. This is a generic name
+      and not hardcoded. So if this class is inherited by a subclass, the subclass gets these alternate ctors and the
+      'cls' becomes the name of the subclass.
+
+    - Refer date.py
+
+    class time.struct_time
+    The type of the time value sequence returned by gmtime(), localtime(), and strptime(). It is an object with a named tuple interface: values can be accessed by index and by attribute name. The following values are present:
+
+    Index	Attribute	Values
+    0	tm_year	(for example, 1993)
+    1	tm_mon	range [1, 12]
+    2	tm_mday	range [1, 31]
+    3	tm_hour	range [0, 23]
+    4	tm_min	range [0, 59]
+    5	tm_sec	range [0, 61]; see (2) in strftime() description
+    6	tm_wday	range [0, 6], Monday is 0
+    7	tm_yday	range [1, 366]
+    8	tm_isdst	0, 1 or -1; see below
+
 
 
 
