@@ -1,0 +1,114 @@
+1. CSS Box Model
+  -- describes the amount of space an element takes up on the page.
+  -- reference: https://developer.mozilla.org/en-US/docs/Web/CSS/box_model
+
+2. Padding  
+  -- used to give the element some breathing room
+  -- seprates the content from the surrounding border area.
+  -- can define values as length or percentage.
+  -- 2 ways of setting values:
+
+     -- individually
+        .wildlife {
+            padding-top: 100px;
+            padding-right: 120px;
+            padding-bottom: 50px;
+            padding-left:  20px;
+         }
+
+     -- short-hand
+        .wildlife {
+            padding: 100px 120px;
+            /* top and bottom: 100px */
+            /* right and left: 120px */
+        }    
+
+        .wildlife {
+            padding: 100px 120px 200px;
+            /* top: 100px */
+            /* right and left: 120px */
+            /* bottom: 200px */
+         }
+
+         .wildlife {
+            padding: 100px;
+            /*top, right, bottom, left: 100px;
+         }
+
+         .wildlife {
+            padding: 100px 120px 50px 20px;
+            /* top: 100px */
+            /* right: 120px */
+            /* bottom: 50px */
+            /* left: 20px */
+         }
+
+   -- when using percentages:
+      -- right and left padding: relative to the width of the parent
+      -- top and bottom padding: relative to the width of the parent, not the height of the parent.
+
+3. Borders
+
+   3 properties:
+   border-width: sets the width of the border.
+   border-style: sets the style of the border.
+   border-color: sets the color of the border.
+
+   border: short-hand for setting the individual border property
+
+   .wildlife {
+      border-width: 10px;
+      border-style: solid;
+      border-color: #ffa949;
+   }
+
+   .wildlife {
+      border: 10px solid #ffa949;
+   }
+
+
+   -- if no color defined, border takes the color of the content.
+
+4. Margin
+
+
+The same order of padding shorthand values applies to the margin property.
+
+.wildlife {
+  margin: 105px 0 60px 0;
+}
+This is exactly the same as writing out the full margin declarations:
+
+.wildlife {
+  margin-top: 105px;
+  margin-right: 0;
+  margin-bottom: 60px;
+  margin-left: 0;
+ }
+
+5. display property
+
+   -- none, block, inline, inline-block
+
+   none
+   -- does not display the element on the page
+
+   block
+   -- div, p, li etc are block elements by default
+   -- takes up full width available with respect to its parent and also top and bottom space.
+   -- pushes the elements to the next line.
+
+   inline
+   -- <a>, <img>, <span> are inline elements by default
+   -- only takes up the space required for its content
+   -- does not push elements to the next line
+
+   inline-block
+   -- has both properties of inline and block
+
+   -- to apply top and bottom margin to <a> is not possible by default, because it is inline element
+
+      -- in this case, make its display: inline-block
+
+      -- if we set it to display: block, it will take up the entire width available wrt its parent.
+
