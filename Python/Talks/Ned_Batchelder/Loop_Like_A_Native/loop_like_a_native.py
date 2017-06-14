@@ -138,3 +138,44 @@ Other uses of iterables
     2. loop is implicit in the function
     
 """)
+
+print("""
+enumerate function
+------------------
+
+1. Indexing does not work on many iterables like set, dictionary, files etc.
+
+So we cannot use
+
+for i in range(len(iterable)):
+   print i, iterable[i]
+   
+    >>> my_set = {'a', 'b', 'c'}
+    >>> for i in range(len(my_set)):
+    ...     print(i, my_set[i])   
+    ...     
+    Traceback (most recent call last):
+      File "/usr/lib/python3.5/code.py", line 91, in runcode
+        exec(code, self.locals)
+      File "<input>", line 2, in <module>
+    TypeError: 'set' object does not support indexing
+    
+    
+    >>> for i, element in enumerate(my_set, start=1):
+    ...     print(i, element)
+    ...     
+    1 a
+    2 c
+    3 b    
+""")
+
+
+print("""
+Loop over two list at the same time
+-----------------------------------
+    -- Refer loop_over_2_lists.py
+    -- use the zip function
+    -- zip function:
+        -- takes a pair of streams and produces a stream of pairs.
+    -- the dict() constructor accepts a stream of pairs to create a dictionary
+""")
