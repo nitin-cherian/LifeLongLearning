@@ -1,0 +1,127 @@
+8.1 Inheritance concepts
+========================
+
+1. Inheritance is used for re-usability and extensibility
+
+2. The name os the class in parenthesis is the base class
+
+    class Child1(Parent):
+        pass
+
+3. What all can you do in the derived class
+
+    Refer inherit.py
+
+    a) Add a new functionality
+    ---------------------------
+
+    >>> class Child1(Parent):
+    ...   def yow(self):
+    ...     print('Child1.yow')
+    ...
+    >>> c = Child1()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    TypeError: __init__() missing 1 required positional argument: 'value'
+    >>> c = Child1(43)
+    >>> c.value
+    43
+    >>> c.spam()
+    Parent.spam 43
+    >>> c.grok()
+    Parent.grok
+    Parent.spam 43
+    >>> c.yow()
+    Child1.yow
+
+    b) Redefine a method in base class
+    ----------------------------------
+    >>> class Child2(Parent):
+    ...   def spam(self):
+    ...     print('Child2.spam', self.value)
+    ...
+    >>> c = Child2(54)
+    >>> c.spam()
+    Child2.spam 54
+    >>> c.grok()
+    Parent.grok
+    Child2.spam 54
+
+    Here the spam method is redefined in derived class.
+
+    c) Ability to wrap an existing method
+    -------------------------------------
+
+    This is a variant of b) .
+
+    Adding a tweak to the existing functionality, but still want to use the original method.
+    Makes use of the function super()
+
+    >>> class Child3(Parent):
+    ...     def spam(self):
+    ...         print('Child3.spam')
+    ...         super().spam()
+    ...
+    >>> c = Child3(90)
+    >>> c.spam()
+    Child3.spam
+    Parent.spam 90
+    >>> c.grok()
+    Parent.grok
+    Child3.spam
+    Parent.spam 90
+
+
+    d) Add an attribute to the object
+    ---------------------------------
+
+    -- change the way the object is going to be initialized
+    -- still have to worry about the parent - have to call the parent init method explicitly
+
+    >>> class Child4(Parent):
+    ...     def __init__(self, value, extra):
+    ...         self.extra = extra
+    ...         super().__init__(value) # invokes the parent init method
+    ...
+    >>> c = Child4(54, 67)
+    >>> c.value
+    54
+    >>> c.extra
+    67
+
+    e) Multiple Inheritance
+
+    -- The parents are going to merge together and we are going to get combined functionality
+    >>> class Parent2:
+    ...     def yow(self):
+    ...         print('Parent2.yow')
+    ...
+    >>> class Child5(Parent, Parent2):
+    ...     pass
+    ...
+    >>> c = Child5()
+    Traceback (most recent call last):
+      File "/usr/lib/python3.5/code.py", line 91, in runcode
+        exec(code, self.locals)
+      File "<input>", line 1, in <module>
+    TypeError: __init__() missing 1 required positional argument: 'value'
+    >>> c = Child5(43)
+    >>> c.spam()
+    Parent.spam 43
+    >>> c.grok()
+    Parent.grok
+    Parent.spam 43
+    >>> c.yow()
+    Parent2.yow
+
+
+
+
+
+
+
+
+
+
+
+
