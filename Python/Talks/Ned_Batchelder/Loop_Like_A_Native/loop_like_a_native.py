@@ -179,3 +179,12 @@ Loop over two list at the same time
         -- takes a pair of streams and produces a stream of pairs.
     -- the dict() constructor accepts a stream of pairs to create a dictionary
 """)
+
+print("""
+max() function on dict
+----------------------
+
+    -- Refer max_function_on_dict.py
+    -- max function iterates through the first parameter, it can be values, items or keys and returns the value, item or key based on the key function
+    -- what is passed as parameter to the key function during each iteration is the first parameter of max function(can be values, items or keys) 
+""")
