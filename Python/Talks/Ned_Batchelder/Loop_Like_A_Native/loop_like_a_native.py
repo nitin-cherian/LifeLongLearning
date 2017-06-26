@@ -188,3 +188,33 @@ max() function on dict
     -- max function iterates through the first parameter, it can be values, items or keys and returns the value, item or key based on the key function
     -- what is passed as parameter to the key function during each iteration is the first parameter of max function(can be values, items or keys) 
 """)
+
+print("""
+Generators
+----------
+    -- when invoked returns an iterator
+    -- when the returned iterator is iterated, it runs the statements in the generator and whenever the yield keyword 
+    is hit, it produces one more value.
+    -- kind of a function which can keep producing values over and over.
+    -- a simple generator, refer simple_generator.py
+    -- an evens generator, refer even_generator.py
+    -- abstracting iteration
+       eg: iterating a file to get the lines which are not blank and lines not startswith pound(#)
+       refer interesting_lines.py 
+""")
+
+print("""
+Low level iteration
+-------------------
+    -- iterable: any value that produces a stream of values
+    -- iterator: an object that knows where you are in that stream.
+    -- a book full of pages is an iterable, and bookmark is an iterator. 
+        -- a book can have multiple bookmarks, similarly an iterable can have multiple iterators
+        
+    iterator = iter(iterable)
+    value = next(iterator)
+    value = next(iterator)
+    ..
+    ..
+    ..
+""")
