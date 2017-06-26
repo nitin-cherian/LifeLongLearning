@@ -1,0 +1,27 @@
+1. Width and Height Properties
+------------------------------
+
+- an elements width and height are as wide or tall as the content it holds.
+- total height or width is affected by the padding, border.
+
+2.box-sizing property
+---------------------
+
+-- sometimes the above behaviour is not waht we want.
+-- we may not want the padding and border to affect the total height or width of the element.
+-- use box-sizing in this case.
+
+3. max-width property
+---------------------
+
+-- Usually this property is used when the percentage value is used for width.
+-- prevents the fluidity of the element not to stretch beyond a max width.
+-- for images to be responsive, usually the following is done
+
+   img {
+    max-width: 100%;
+   }
+
+   This makes sure that the img always has a max width of the parent elements width. So if the parent is responsive, img will also be responsive.
+
+
