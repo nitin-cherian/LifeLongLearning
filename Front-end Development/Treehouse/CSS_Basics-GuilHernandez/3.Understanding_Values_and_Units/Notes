@@ -71,7 +71,7 @@
    -- gets us around the compounding effect in the case of em units
 
    -- h1 {
-        font-size: 5.625em;
+        font-size: 5.625rem;
       }
 
       The h1 font-size is relative to the default 16px font-size of the root <html> element.
