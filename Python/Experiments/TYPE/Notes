@@ -1,0 +1,65 @@
+Statically Typed Language
+-------------------------
+
+-- the variable name is bound to:
+   1. a type (at compile time)
+   2. an object (optional)
+
+-- cannot be bound to an object of different type at a later stage.
+
+
+Dynamically Type Language
+-------------------------
+
+-- the variable name is bound only to the object and not to a type.
+
+-- binding happens at run-time
+
+-- can be bound to an object of different type at run-time.
+
+
+eg: In Python, the following code is valid
+
+a = "hello"
+a = 10
+
+
+Weakly Typed Language
+---------------------
+
+-- Unrelated types (eg: int, str) can be coerced implicitly.
+
+eg: In javascript the below code is valid:
+
+var a = 10
+var b = "hello"
+var c = a + b
+
+The integer 10 is implictly converted to a string before concatenation.
+
+Strongly Typed Language
+-----------------------
+
+-- Unrelated types cannot be coerced implicitly. Needs explicit type convertion.
+
+eg: In Python the below code is not valid
+
+a = 10
+b = "hello"
+c = a + b
+
+However, if a is explicitly converted to a string like given below, it is valid
+
+a = 10
+b = "hello"
+c = str(10) + b
+
+
+Bottom Line
+===========
+
+Python is a dynamically and strongly typed language.
+
+
+
+
