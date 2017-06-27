@@ -7,7 +7,7 @@
 2.box-sizing property
 ---------------------
 
--- sometimes the above behaviour is not waht we want.
+-- sometimes the above behaviour is not what we want.
 -- we may not want the padding and border to affect the total height or width of the element.
 -- use box-sizing in this case.
 
@@ -23,5 +23,53 @@
    }
 
    This makes sure that the img always has a max width of the parent elements width. So if the parent is responsive, img will also be responsive.
+
+4. Backgrounds: colors and images
+---------------------------------
+
+-- background layer of an element: everything except the margin of the element.
+    -- transparent by default.
+    -- can be filled with color or image.
+
+-- background-image property
+    -- the image is by default repeated or tiled both horizontally and vertically.
+    -- if the image is large, it may not repeat.
+
+-- background-size property
+    -- set the size of the background image
+    -- .main-header {
+         background-size: 40%;
+       }
+
+       -- when percentage is used, the size is relative to the width and height of the background area.
+       -- Not relative to the image's width and height.
+
+-- background-repeat propety
+    -- by default, the background image repeats both horizontally and vertically.
+    -- this can be controlled using background-repeat property.
+    -- can be controlled to repeat, no-repeat, repeat-x, repeat-y and so on - default is repeat.
+    -- it is a good idea to put background-color property, in case the image is not available or user disable images in browser.
+
+-- background-position property
+    -- by default, the image is placed at the top left corner.
+    -- sets the position of the background image in the background area.
+    .main-header {
+    background-position: center top;
+                         /* horizontal vertical */
+    }
+
+-- background-size: cover
+
+   .main-header {
+     background-image: url('../img/mountains.jpg');     
+     background-size: cover;
+   }
+
+   The cover value adjusts the background area so that it's completely covered by the background image, while maintaining its width and height proportions
+
+
+-- the short hand for all the above background properties is 'background'
+
+    
 
 
