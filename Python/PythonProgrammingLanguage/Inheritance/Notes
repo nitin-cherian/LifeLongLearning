@@ -3,7 +3,7 @@
 
 1. Inheritance is used for re-usability and extensibility
 
-2. The name os the class in parenthesis is the base class
+2. The name of the class in parenthesis is the base class
 
     class Child1(Parent):
         pass

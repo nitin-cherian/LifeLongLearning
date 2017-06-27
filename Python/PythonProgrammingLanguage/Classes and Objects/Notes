@@ -76,7 +76,7 @@
     >>> h.shares
     24
 
-    -- Allows general purpose things: Given a a list of columns and it returns the values of the columns.
+    -- Allows general purpose things: Given a list of columns and it returns the values of the columns.
        -- can pick the attributes, order of attributes etc.
 
     >>> h = Holding('AA', '2017-09-10', 89, 56.4)
