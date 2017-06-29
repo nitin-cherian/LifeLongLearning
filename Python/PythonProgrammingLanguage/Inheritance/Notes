@@ -115,6 +115,17 @@
     Parent2.yow
 
 
+8.2 Inheritance in practice
+===========================
+
+-- Code reuse and extensibility
+
+-- Refer holding.py and table.py
+
+-- In table.py, the print_table function is tied to particular implementation
+    -- What if we wanted to have the output in HTML format or CSV format
+    -- To do this, we can supply the print_table function a formatter which is an instance of a TableFormatter class
+    -- the formatter can then be a HTMLTableFormatter, CSVTableFormatter or TextTableFormatter
 
 
 
