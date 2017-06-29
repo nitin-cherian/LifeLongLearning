@@ -70,6 +70,44 @@
 
 -- the short hand for all the above background properties is 'background'
 
-    
+5. Floats: float layout
+-----------------------
+
+-- An element is take out of the normal flow on the page and placed on the left or right side of its container. (side by side)
+-- This causes other elements to wrap around it.
+-- common issue: if a block element contains floated children, its height will collapse.
+-- Use the clearfix hack to prevent this issue
+    -- * Float Clearfix ------------------ */
+
+    .group:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    -- what the above psedo-selector does is, it inserts a blank pseudo element "after" the class selector "group"
+
+6. Lists
+--------
+
+-- list-style-type property
+    -- allows to style the markers of the list element. Default for ol is "decimal" and ul is "disc".
+
+-- list-style-position propery
+    -- by default, the list markers sit outside the list item content.
+    ul,
+    ol{
+       list-style-position: inside;
+    }
+
+-- by default, lists are intended into the page with left padding
+
+   to change that:
+
+-- list-style property
+   -- The shorthand property for setting list-style-type, list-style-image and list-style-position.
+
+
+
 
 
