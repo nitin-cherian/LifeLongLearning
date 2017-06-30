@@ -1,0 +1,70 @@
+1. Defintions
+============
+
+-- iterable: anything that can be looped over
+-- sequences: ordered iterables which are indexable (starting at 0)
+
+>>> numbers = [1, 2, 3, 5, 7]
+>>> coordinates = (4, 5, 7)
+>>> words = "hello world"
+>>> numbers[0]
+1
+>>> coordinates[2]
+7
+
+The above are iterables as well as sequences.
+
+The below are iterables but not sequences.
+
+>>> my_set = {1, 2, 3}
+>>> my_dict = {'k1': 'v1', 'k2': 'v2'}
+>>> my_file = open('file.txt')
+>>> squares = (n ** 2 for n in my_set)
+>>> squares
+<generator object <genexpr> at 0x7f143239d3b8>
+>>> from itertools import count
+>>> c = count()
+
+-- iterator: magical object that makes looping possible.
+
+2. Iterators
+===========
+
+-- iterables can give you iterators
+
+>>> numbers
+[1, 2, 3, 5, 7]
+>>> words
+'hello world'
+>>> coordinates
+(4, 5, 7)
+>>> iter(numbers)
+<list_iterator object at 0x7f1433feaa58>
+>>> iter(words)
+<str_iterator object at 0x7f1433feaa20>
+>>> iter(coordinates)
+<tuple_iterator object at 0x7f1433feaa58>
+
+-- iterators can give you next item until the iterable is exhausted by raising StopIteration.
+   -- this is the only thing the iterator can do
+   -- we can use Python's next function to get the next item from the iterator.
+
+-- they are one directional and cannot be reset.
+
+>>> numbers = [1, 2, 3]
+>>> iterator = iter(numbers)
+>>> iterator
+<list_iterator object at 0x7f1433feaa20>
+>>> next(iterator)
+1
+>>> next(iterator)
+2
+>>> next(iterator)
+3
+>>> next(iterator)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+
+
+
