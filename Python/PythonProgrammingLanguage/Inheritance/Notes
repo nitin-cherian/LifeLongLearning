@@ -127,6 +127,17 @@
     -- To do this, we can supply the print_table function a formatter which is an instance of a TableFormatter class
     -- the formatter can then be a HTMLTableFormatter, CSVTableFormatter or TextTableFormatter
 
+8.3 Advanced Inheritance
+========================
+
+-- if the subclass uses a custom init (eg: for adding an attribute)
+    -- Initialize the parent also, by invoking the parent's init
+    -- Otherwise, we can run into all sorts of problems.
+
+-- we can redirect the output of print statement into a file using the file keyword.
+    -- by default it is sys.stdout
+    -- file is not a string but a file object.
+
 
 
 
