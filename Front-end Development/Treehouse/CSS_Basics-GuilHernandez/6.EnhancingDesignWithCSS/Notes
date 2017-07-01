@@ -1,0 +1,48 @@
+1. Text Shadows
+===============
+
+-- gives a shadow effect to texts
+
+-- accepts three length values followed by a color value
+
+    h1 {
+      text-shadow: 2px 2px 1px #222;
+    }
+
+    first value - horizontal offset, offset is towards right if positive and left if negative.
+    second value - vertical offset, offset is towards bottom if positive and top if negative
+    third value - blur radius (optional)
+    fourth value - color value
+
+-- 3D text example: http://markdotto.com/playground/3d-text/
+
+
+2. Box Shadows
+==============
+
+-- gives shadow effect to elements
+
+-- the order of values is similar to values for text shadow
+
+-- .wildlife {
+    box-shadow: 15px 15px 10px 20px rgba(0, 0, 0, .8);
+    }
+
+    first value - horizontal offset
+    second value - vertical offset
+    third value - optional, blur radius
+    fourth value - optional, spread distance
+    fifth value - color value
+
+-- inner shadow
+
+   -- this can be done using 'inset' keyword
+   .wildlife {
+      box-shadow: inset 0 0 50px 10px rgba(0, 0, 0, 1);
+    }
+
+-- multiple values
+
+   -- like for text shadow property, mutiple values can be specified for box shadow property also.
+
+
