@@ -45,4 +45,82 @@
 
    -- like for text shadow property, mutiple values can be specified for box shadow property also.
 
+3. Border radius 
+================
+
+-- gives rounder borders for elements.
+
+-- border-radius is the short-hand property for
+
+   .box {
+     border-top-left-radius: 20px;
+     border-top-right-radius: 10px;
+     border-bottom-right-radius: 20px;
+     border-bottom-left-radius: 10px; 
+   }
+
+   this can be written using border-radius property like so:
+
+   .box {
+     border-radius: 20px 10px 20px 10px;
+   }
+
+   or
+
+   .box {
+     border-radius: 20px 10px;
+   }  
+
+-- to set an even border radius on all the 4 corners:
+
+   .box {
+     border-radius: 20px;
+   }
+
+-- if % is scecified, the border-radius will be relative to the element's width and height
+
+-- TIP: http://blog.teamtreehouse.com/css-tip-better-rounded-borders
+
+4. Gradients
+===========
+
+-- allows to add depth to the designs by smooth and gradual transition between two or more colors
+
+-- linear-gradient
+
+   -- allows gradients to move in linear form
+
+   -- can specify the direction or angle 
+
+      .box {
+        background-image: linear-gradient(45deg, #ffa949, firebrick)
+      }
+
+      .box {
+        background-image: linear-gradient(to top, #ffa949, firebrick)
+      }
+
+   -- by default the direction is from bottom to top
+      .box {
+        background-image: linear-gradient(#ffa949, firebrick)
+      }
+
+-- radial-gradient
+
+   -- allows gradients to move from a point to outwards radially.
+
+   -- by default, the radial is in the form an ellipse. 
+
+   -- can specify the position of the radial point and the shape of the radial outward
+
+      .box {
+        background-image: radial-gradient(circle at top, #ffa949, firebrick);
+      }
+
+      .box {
+        background-image: radial-gradient(at bottom left, #ffa949, firebrick);
+      }
+
+      
+
 
