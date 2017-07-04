@@ -139,6 +139,34 @@
     -- file is not a string but a file object.
 
 
+8.4 Designing for Inheritance
+=============================
+
+-- Some design issues needs to be considered while coding inheritance
+
+-- refer table.py
+
+-- Issue 1:
+    -- what is the relationship between the class 'TableFormatter' and the function 'print_table' ?
+    -- One might use the function 'print_table' as a method in the class 'TableFormatter'
+        -- refer table1.py
+        -- moves the function into the class
+        -- make an object of the subclasses 'TextTableFormatter', 'HTMLTableFormatter' or 'CSVTableFormatter'
+        -- use this object to drive the printing by invoking the 'print_table' method.
+        -- Is this a good idea?
+            -- Not in this case
+            -- because the print_table is very specific. You cannot print the table in any other format. You have to give it a list of objects and column names
+
+-- Issue 2:
+    -- Use a separate class for composing the formatter object.
+    -- Use the object of this class to drive the printing
+    -- refer table2.py
+    -- Problem:
+       -- complex
+       -- too many object plumming
+       -- print_table is the only method in the new class. It might have been good, if there were other functions in the new class
+
+
 
 
 
