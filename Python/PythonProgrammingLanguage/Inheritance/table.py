@@ -1,8 +1,12 @@
 # table.py
 import sys
+from abc import ABC, abstractmethod
 
 
 def print_table(objects, colname, formatter):
+    if not isinstance(formatter, TableFormatter):
+        raise TypeError("formatter must be a TableFormatter")
+
     # Emits the header
     formatter.heading(colname)
 
@@ -12,18 +16,20 @@ def print_table(objects, colname, formatter):
         formatter.row(rowdata)
 
 
-class TableFormatter:
+class TableFormatter(ABC):
     # This class serves as a design spec which forces the subclasses to implement the methods.
     def __init__(self, outfile=None):
         if outfile is None:
             outfile = sys.stdout
         self.outfile = outfile
 
+    @abstractmethod
     def heading(self, headers):
-        raise NotImplementedError
+        pass
 
+    @abstractmethod
     def row(self, rowdata):
-        raise NotImplementedError
+        pass
 
 
 class TextTableFormatter(TableFormatter):

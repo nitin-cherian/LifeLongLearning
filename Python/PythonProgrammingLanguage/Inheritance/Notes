@@ -167,11 +167,58 @@
        -- print_table is the only method in the new class. It might have been good, if there were other functions in the new class
 
 
+8.5 Defensive Programming with Abstract Base Class
+==================================================
+
+-- Refer table.py
+
+-- If the subclasses of the TableFormatter class does not implement the heading or row method
+    -- when the sublass is instantiated, no error is thrown
+       formatter = table.TextTableFormatter()
+
+    -- The error is deferred to a later stage, when the formatter object is used to invoke
+       the heading or row method(whichever is not implementedo)
+
+       formatter = table.TextTableFormatter()
+       table.print_table(porfolio, ['name', 'shares'], formatter)
+       Traceback (most recent call last):
+       File "/usr/lib/python3.5/code.py", line 91, in runcode
+       exec(code, self.locals)
+       File "<input>", line 1, in <module>
+       File "/home/nitin/Learn/Repositories/Github/LifeLongLearning/Python/PythonProgrammingLanguage/Inheritance/table.py", line 7, in print_table
+       formatter.heading(colname)
+       File "/home/nitin/Learn/Repositories/Github/LifeLongLearning/Python/PythonProgrammingLanguage/Inheritance/table.py", line 23, in heading
+       raise NotImplementedError
+       NotImplementedError
 
 
+    -- We would like to tell the user of this class about the error, as soon as he instantiates
+    the subclass
+
+        -- This can be done using Abstract Base Class and abstract method
+
+            -- Make the baseclass Abstract (inherit from abc.ABC)
+
+            -- declare the methods as abstract methods (@asbtractmethod)
+
+            -- No need to raise 'NotImplemented' error in the base class methods.
+
+        >>> formatter = table.TextTableFormatter()
+        Traceback (most recent call last):
+        File "/usr/lib/python3.5/code.py", line 91, in runcode
+        exec(code, self.locals)
+        File "<input>", line 1, in <module>
+        TypeError: Can't instantiate abstract class TextTableFormatter with abstract methods heading
 
 
+        -- In this way, it forces the user to implement the methods in subclass before instantiation.
 
+-- isIntance() check
 
+	-- It is a good idea to check the type of 'formatter' before it is used to invoke the base class methods
 
+    -- if formatter is not an instance of TableFormatter, no need to go further
 
+    -- So the isInstance(formatter, TableFormatter) is a defensive check to prevent this.
+
+    -- We are using the baseclass 'TableFormatter' in this method as it can serve all its subclasses.
