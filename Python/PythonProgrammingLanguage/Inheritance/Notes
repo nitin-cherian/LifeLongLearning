@@ -222,3 +222,82 @@
     -- So the isInstance(formatter, TableFormatter) is a defensive check to prevent this.
 
     -- We are using the baseclass 'TableFormatter' in this method as it can serve all its subclasses.
+
+
+8.6 How Inheritance actually works
+==================================
+
+-- refer inherit1.py
+
+-- A inherits from Parent and B inherits from A
+
+-- When the instance of B is used to invoke the spam method
+
+    -- we see the methods chaining up from the subclass to the parent class 
+
+    -- every class keeps a record of its parents.
+
+    -- this is based on the __mro__ attribute associated with each class
+
+    -- >>> b = B()
+       >>> b.spam()
+       B.spam
+       A.spam
+       Parent.spam
+       >>> B.__mro__
+       (<class '__main__.B'>, <class '__main__.A'>, <class '__main__.Parent'>, <class 'object'>)
+       >>> A.__mro__
+       (<class '__main__.A'>, <class '__main__.Parent'>, <class 'object'>)
+
+    -- When attributes are looked up, this chain is followed left to right  
+
+    -- Interesting things happen when you do multiple inheritance like so:
+
+       >>> class E(A, C, D):
+       ...     pass
+       ... 
+       >>> e = E()
+       >>> e.spam()
+       A.spam
+       C.spam
+       D.spam
+       Parent.spam
+
+
+       -- The chaining happens in the order of the parents specified for E
+
+       -- suppose you change the order
+
+       >>> class F(D, C, A):
+       ...     pass
+       ... 
+       >>> f = F()
+       >>> f.spam()
+       D.spam
+       C.spam
+       A.spam
+       Parent.spam
+
+
+       -- The chaining happens in that order.
+
+       -- If you look closely for instance in class D
+
+          -- after printing D.spam(), super().spam() is invoked.
+          -- although we might think, super of D is Parent class, the invocation super().spam() does not invoke Parent.spam
+          -- instead it invokes C.spam()
+          -- Why? 
+          -- This is co-operative inheritance
+
+       -- 2 rules to inheritance
+
+          -- 1. Any child class always needs to be checked before its parent.
+          -- 2. If more than one parent, the parents have to be checked in the order given.
+             -- In our example, all the parents had a common ancestor
+          
+       -- super() function
+
+          -- always follows the mro chain
+
+
+ 
