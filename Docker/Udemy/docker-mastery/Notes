@@ -1,0 +1,25 @@
+1. Installing Docker
+===================
+
+Installing on Linux
+------------------
+
+-- Do not use default apt/yum to install Docker
+
+   -- The packages will be old and not official Docker-Built packages.
+
+-- Use Docker's automated script to add their repo and install dependencies
+
+   -- curl -sSL https://get.docker.com/ | sh
+
+
+2. Course Chat Room
+===================
+
+General Steps:
+
+1. Go to chat.dockermastery.com and give it your email address.
+2. You will be sent an email from Slack, with a invite link inside it.
+3. Click that link.
+4. Fill out the form to create your Slack account.
+5. Use that Slack account to access dockermastery.slack.com
