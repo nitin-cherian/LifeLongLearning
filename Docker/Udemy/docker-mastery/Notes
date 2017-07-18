@@ -23,3 +23,37 @@ General Steps:
 3. Click that link.
 4. Fill out the form to create your Slack account.
 5. Use that Slack account to access dockermastery.slack.com
+
+3. Check Docker Install and Config
+=================================
+
+-- # docker version
+
+   -- shows 2 sections: Client and Server
+   -- Client --> The CLI which communicates with Server through APIs
+   -- Server --> Docker Engine
+             -- Docker Engine runs as a daemon
+             -- It can be local meaning Client and Server can be on the same machine
+             -- Or it can be remote to the Client.
+
+-- # docker info
+
+   -- Detailed info of the docker system which is running
+   -- It contains info such as how many docker images, docker containers etc.
+
+-- These 2 commands confirm that Docker is up and running.
+
+
+-- # docker
+
+   -- This command will list all the available docker commands the CLI supports.
+
+-- docker command format
+
+   docker <command> <subcommand> (options)
+
+   This is the new format
+
+   while the old format was:
+
+   docker <command> (options)
