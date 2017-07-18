@@ -1,0 +1,105 @@
+Python Magic Methods
+===================
+
+-- When defining objects, it is usally beneficial to make your object play nicely with other parts of Python.
+
+-- This is done through special/magic methods.
+
+
+9.1 Use of magic methods to implement operators
+===============================================
+
+-- Every operation on Python objects involves a special method call underneath the covers
+
+-- For eg:
+
+>>> a = 10
+>>> a + 10
+20
+>>> a.__add__(10)
+20
+>>> a * 10
+100
+>>> a.__mul__(10)
+100
+
+
+The + operator is actually calling the special method __add__ of the integer object
+
+This applies to any other objects in Python also:
+
+>>> company = ['IBM', 'FB', ' GOOGLE']
+>>> company[1]
+'FB'
+>>> company.__getitem__(1)
+'FB'
+>>> company[2] = 'AA'
+>>> company
+['IBM', 'FB', 'AA']
+>>> company.__setitem__(2, 'BB')
+>>> company
+['IBM', 'FB', 'BB']
+
+
+-- We can use these special methods in our custom objects also
+
+   >>> class Point:
+   ...     def __init__(self, x, y):
+   ...         self.x = x
+   ...         self.y = y
+   ...     def __add__(self, other):
+   ...         print('Add other')
+   ...         
+   >>> p = Point(3, 4)
+   >>> p + 10
+   Add other
+
+
+   -- The implementor of the class is free to do what he wants to do when the object is used during an add operation.
+
+   -- Notice how it works smoothly just like any other objects in Python.
+
+3. Making objects printable and debuggable
+=========================================
+
+-- Refer holding.py
+
+-- When you give the holding object to the REPL or try to print it, it does not show any useful o/p
+
+>>> from holding import read_portfolio, Holding
+>>> h = Holding('AA', '2016-08-09', 100, 45.6)
+>>> h
+<holding.Holding object at 0x7fa64ac6e400>
+>>> print(h)
+<holding.Holding object at 0x7fa64ac6e400>
+
+-- __repr__ and __str__ magic methods
+
+-- __repr__
+
+   -- Used for developer debugging
+
+   -- Invoked when you try to give the object to the REPL or use the repr method on the object
+
+   >>> from holding import Holding
+   >>> h = Holding('IBM', '2016-09-08', 100, 56.7)
+   >>> h
+   Holding('IBM', '2016-09-08', 100, 56.7)
+   >>> repr(h)
+   "Holding('IBM', '2016-09-08', 100, 56.7)"
+
+-- __str__
+
+   -- Used for giving useful o/p to the user
+
+   -- Invoked when you try to print the object using print method or use the string conversion function str on the object
+
+   >>> print(h)
+   100 shares of IBM at $56.70
+   >>> str(h)
+   '100 shares of IBM at $56.70'
+
+
+-- Both functions must return a string representation of the object.
+
+-- It is highly recommended to use these special methods in almost all classes for debugging purposes.
