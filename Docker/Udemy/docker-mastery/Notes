@@ -38,7 +38,7 @@ General Steps:
 
 -- # docker info
 
-   -- Detailed info of the docker system which is running
+   -- Detailed info and configuration of the docker system which is running
    -- It contains info such as how many docker images, docker containers etc.
 
 -- These 2 commands confirm that Docker is up and running.
@@ -57,3 +57,116 @@ General Steps:
    while the old format was:
 
    docker <command> (options)
+
+4. Starting a Ngnix Web Server
+=============================
+
+-- Image vs Container
+
+   -- Image - application we want to run
+   -- Container - instance of the image running as a process
+      -- can have any number of containers running off the same image 
+      
+
+-- # docker container run --publish 80:80 ngnix
+
+   What does this command do
+
+   -- The Docker Engine looks up ngnix image and pulls the image from docker hub (hub.docker.com)
+   -- Started a new container for the ngnix image
+   -- --publish 80:80
+        -- Opened port 80 on the host IP
+        -- Routes port 80 traffic on the host IP to port 80 of the container IP
+        -- The Nginx web server runs on the port 80 of container IP
+
+   -- This command runs the container in the foreground
+
+-- # docker container run --publish 80:80 --detach nginx
+
+   -- This command runs the container in the background
+   -- It returns the unique container id
+   -- Each time you run the command, it runs a new container for the image
+
+   # sudo docker container run --publish 80:80 --detach nginx
+   b815092838dd01127f5e6edcb0a47b0e42d51dae26b7183b2aba790dc673153a
+
+-- List the containers that are running
+
+   -- # docker container ls
+  
+   # sudo docker container ls
+   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                NAMES
+   b815092838dd        nginx               "nginx -g 'daemon ..."   40 seconds ago      Up 39 seconds       0.0.0.0:80->80/tcp   practical_jones
+
+
+   -- Notice the container id matches the id in the previous command 
+
+-- Stop the running container
+
+   -- # docker container stop b81
+
+   -- The container id to specified for this command needs to as large as to make it unique.
+
+   -- The commands returns the container id on stopping the container.
+
+   # sudo docker container stop b81
+   b81
+   # sudo docker container ls
+   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+-- List all containers both running and exited.
+
+   # docker container ls -a
+
+   -- ls command shows names for the containers.
+   -- the names are unique for the containers just like id.
+   -- the names are generated randomly if you dont specify a name while running a container.
+
+-- Specify a name for the container
+
+   -- # docker container run --publish 80:80 --detach --name "webhost" nginx
+   80d966fccee0870cbdf7dfe8d9f71331a74f078715bade2925c64b6dadfdf134
+
+   # sudo docker container ls -a
+   CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                      PORTS                NAMES
+   80d966fccee0        nginx               "nginx -g 'daemon ..."   About a minute ago   Up About a minute           0.0.0.0:80->80/tcp   webhost
+   b815092838dd        nginx               "nginx -g 'daemon ..."   13 minutes ago       Exited (0) 9 minutes ago                         practical_jones
+   c50fb599c22e        nginx               "nginx -g 'daemon ..."   17 minutes ago       Exited (0) 16 minutes ago                        musing_kare
+   c70248a9d81e        nginx               "nginx -g 'daemon ..."   22 minutes ago       Exited (0) 17 minutes ago                        zealous_blackwell
+   166cd223f005        nginx               "nginx -g 'daemon ..."   2 days ago           Exited (0) 2 days ago                            youthful_hypatia
+
+-- Notice wee are not able to see the logs when we run in the background
+
+-- To spit out the logs
+
+   # docker container logs webhost
+
+   -- webhost is the name of the container we just created.
+
+-- List the processes run in the container
+
+   -- # docker container top webhost
+
+   # sudo docker container stop b81
+   b81
+   nitin@devb:docker-mastery$ sudo docker container ls
+   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+-- Get a list of command that can run on a container
+
+   -- # docker container webhost --help
+
+-- Remove containers
+
+   -- # docker container rm <id1> <id2> ..
+
+      -- using this command, the running containers cannot be removed
+
+      -- two method to remove running containers
+
+         1. Stop the container and use the previous command
+
+         2. # docker container rm -f <id>
+
+
+
