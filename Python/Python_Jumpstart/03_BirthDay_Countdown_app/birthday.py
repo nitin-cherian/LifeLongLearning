@@ -1,4 +1,8 @@
 # birthday.py
+import datetime
+from collections import namedtuple
+
+Date = namedtuple('Date', ['year', 'month', 'day'])
 
 
 def print_header():
@@ -19,12 +23,16 @@ def get_user_bday():
     month = int(month.strip())
     day = int(day.strip())
 
-    return year, month, day
+    return Date(year, month, day)
 
 
 def calculate_days(bday):
     """ Calculate the number of days until the user's birthday """
-    return 0
+    now = datetime.datetime.now()
+    diff = now - datetime.datetime(now.year, bday.month, bday.day)
+    days = int(diff.total_seconds() / 60 / 60 / 24)
+
+    return days
 
 
 def print_result(bday, days):
