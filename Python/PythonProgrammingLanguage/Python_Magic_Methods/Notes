@@ -59,7 +59,7 @@ This applies to any other objects in Python also:
 
    -- Notice how it works smoothly just like any other objects in Python.
 
-3. Making objects printable and debuggable
+9.2. Making objects printable and debuggable
 =========================================
 
 -- Refer holding.py
@@ -103,3 +103,121 @@ This applies to any other objects in Python also:
 -- Both functions must return a string representation of the object.
 
 -- It is highly recommended to use these special methods in almost all classes for debugging purposes.
+
+9.3 Making a custom container object
+===================================
+
+-- Refer holding.py
+
+-- In the previous version of the program, the read_portfolio() function returned a list of holding objects
+
+-- Someone may need a custom portfolio class, may be to implement custom methods like total_cost, current_value etc
+
+-- In this case, we can make a custom class 'Portfolio' that serves as a container for the list of holding object
+
+-- In __init__ method, we initialize an empty list of holding objects
+
+-- Create a classmethod which serves as an alterante customer which populates the list of holding objects from csv file using th read_portfolio method.
+
+-- For that read_portfolio is moved into the custom class
+
+-- Now if we make an object like so:
+
+>>> from holding import Portfolio
+>>> portfolio = Portfolio.from_csv('Data/portfolio.csv')
+>>> portfolio.holdings
+[Holding('"AA"', '"2007-05-11"', 100, 32.2), Holding('"IBM"', '"2007-08-11"', 50, 91.1),
+
+
+-- The portfolio object contains the list of holding objects
+
+-- Here is the problem:
+
+  -- By making a custom container, almost everything you could do with a list is brocken
+
+     -- I cannot get the length of the portfolio
+
+     >>> len(portfolio)
+     Traceback (most recent call last):
+     File "/usr/lib/python3.5/code.py", line 91, in runcode
+     exec(code, self.locals)
+     File "<input>", line 1, in <module>
+     TypeError: object of type 'Portfolio' has no len(
+
+     -- I cannot index the portfolio
+     portfolio[1]
+     Traceback (most recent call last):
+     File "/usr/lib/python3.5/code.py", line 91, in runcode
+     exec(code, self.locals)
+     File "<input>", line 1, in <module>
+     TypeError: 'Portfolio' object does not support indexing
+
+     -- I cannot loop through the portfolio
+     >>> for holding in portfolio:
+     ...     print(holding)
+     ...     
+     Traceback (most recent call last):
+       File "/usr/lib/python3.5/code.py", line 91, in runcode
+           exec(code, self.locals)
+             File "<input>", line 1, in <module>
+             TypeError: 'Portfolio' object is not iterable
+             
+  -- Reason for breakage: The Custom Class does not implement any of the special methods to use any of the operations above
+
+
+  -- Inorder to avoid this problem, I could have implemented a size method for getting the length,
+
+     def size(self):
+       return len(self.holdings)
+
+     I could have implmented getHolding method which returns a holding
+
+     def getHolding(self, n):
+        return self.holdings[n]
+
+
+     -- However, this is normally not the way Python programmers do programming
+
+     -- They use the len method for finding the length of something, they use the indexing to get an element
+
+  -- Instead, implement the special methods which plays nicely with Python
+
+     -- when you invoke len(), __len__ gets called
+     -- When you invoke indexing, __getitem__ gets called
+     -- When you invoke looping, __iter__ gets called
+
+     >>> p = Portfolio.from_csv('Data/portfolio.csv')
+     >>> len(p)
+     7
+     >>> p[2]
+     Holding('"CAT"', '"2007-06-11"', 150, 83.44)
+     >>> p[3]
+     Holding('"MSFT"', '"2007-09-11"', 200, 51.23)
+     >>> for holding in p:
+     ...     print(holding)
+     ...     
+     100 shares of "AA" at $32.20
+     50 shares of "IBM" at $91.10
+     150 shares of "CAT" at $83.44
+     200 shares of "MSFT" at $51.23
+     95 shares of "GE" at $40.70
+     50 shares of "MSFT" at $65.10
+     100 shares of "IBM" at $70.44
+
+
+  -- Now I can get a little more creative,
+
+     for instance, I can overload the __getitem__ method used for indexing
+
+     -- Refer holding.py
+
+        -- If the user supplies a name, the holding matching the name is returned, else the holdings list is indexed by the supplied index
+
+        >>> portfolio[2]
+        Holding('"CAT"', '"2007-06-11"', 150, 83.44)
+        >>> portfolio['"IBM"']
+        [Holding('"IBM"', '"2007-08-11"', 50, 91.1), Holding('"IBM"', '"2007-03-11"', 100, 70.44)]
+
+   -- There are many things you could do using special methods. Use a reference manual.
+
+
