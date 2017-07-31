@@ -1,0 +1,89 @@
+1. All about Decorators
+=======================
+
+-- Decorators - also known as "higher-order functions" 
+
+-- Higher-order functions - Functions that can take one more functions as arguments and return a function as its result.
+
+-- In other words: Decorators take the function they are decorating and extend its behaviour without modifying the function itself.
+
+
+2. Functions are objects too
+============================
+
+-- Functions in Python are "first-class objects"
+
+   -- They can be passed around
+   -- They can be passed as arguments to other functions
+      -- Just like anyother datatype in Python
+
+3. Our First Decorator
+=====================
+
+>>> def doubler(number):
+...     """ Doubles the number passed to it"""
+...     return number * 2
+... 
+>>> def info(func):
+...     def wrapper(*args):
+...         print('Function name: ', func.__name__)
+...         print("Function doc string: ", func.__doc__)
+...         
+>>> def info(func):
+...     def wrapper(*args):
+...         print('Function name: ', func.__name__)
+...         print("Function doc string: ", func.__doc__)
+...         return func(*args)
+...     return wrapper
+... 
+>>> my_decorator = info(doubler)
+>>> my_decorator
+<function info.<locals>.wrapper at 0x7eff702f7c80>
+>>> my_decorator(2)
+Function name:  doubler
+Function doc string:   Doubles the number passed to it
+4
+
+
+-- info is the decorator function
+
+-- wrapper is the function which is nested inside the info function.
+
+-- the wrapper function accepts the arguments of the function which info function is decorating. It can optionally take keyword arguments also.
+
+-- the wrapper function returns the decorated function by invoking it with arguments
+
+-- Finally the decorater returns the wrapper function.
+
+-- The decorator is invoked as shown above. This is not the usual way of invocation.
+
+4. Using Decorator Syntax
+=========================
+
+-- Decorator can be called using the syntax @info
+
+-- Refer decorator.py
+
+   -- Now we can directly call the doubler function itself.
+   -- The @info tells Python to automatically decorate the function and call the decorator when the function is called.
+
+5. Stacked Decorators
+=====================
+
+-- More than one decorators can be used on a function.
+
+-- The decorator closest to the function is called first and then the next and so on.
+
+
+@italic
+@bold
+def formatted_text():
+    return 'Python Rocks!'
+
+This is equivalent to:
+
+formatted_text = bold(formatted_text)
+formatted_text = italic(formatted_text)
+
+
+
