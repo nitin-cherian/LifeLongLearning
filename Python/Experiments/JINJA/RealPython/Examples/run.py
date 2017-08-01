@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def template_test():
-    return render_template("template.html", my_string="Wheeee!", my_list=[0, 1, 2, 3, 4, 5])
+    return render_template("template.html", my_string="Wheeee!", my_list=[0, 1, 2, 3, 4, 5], my_dict=dict(name="Nitin",
+                                                                                                          age=32))
 
 
 if __name__ == '__main__':
