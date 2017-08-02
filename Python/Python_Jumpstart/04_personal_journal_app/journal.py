@@ -13,12 +13,41 @@ def print_header():
     print("--------------------------------")
 
 
+def list_entry(entries):
+    print("Your {} journal entries".format(len(entries)))
+    print()
+
+    for index, entry in enumerate(entries, start=1):
+        print("[{}]* {}".format(index, entry))
+
+
+def add_entry(journal):
+    print('Enter your journal entry:')
+    entry = input()
+    journal.append(entry)
+
+
 def main():
     print_header()
+    journal = "default.jrl"
+    entries = []
 
     while True:
         user_input = input("What do you want to do? [L]ist, [A]dd or E[x]it: ")
-        print(user_input)
+        user_input = user_input.strip().lower()
+
+        if user_input == 'l':
+            list_entry(entries)
+        elif user_input == 'a':
+            add_entry(entries)
+        elif user_input == 'x':
+            print("..saving to ./data/default.jrl")
+            break
+        else:
+            continue
+
+        print()
+
 
 if __name__ == '__main__':
     main()
