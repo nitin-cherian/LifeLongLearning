@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome, friends!</title>
+</head>
+<body>
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{message}}</div>
+        {% endfor %}
+        {% if error %}
+            <p class="error"><strong>{{error}}</strong></p>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
