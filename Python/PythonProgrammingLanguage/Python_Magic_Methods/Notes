@@ -221,3 +221,112 @@ This applies to any other objects in Python also:
    -- There are many things you could do using special methods. Use a reference manual.
 
 
+9.4 Making a custom context manager
+==================================
+
+-- related to resource management in python
+
+-- for instance the common pattern is like so:
+
+   f = open('filename.csv')
+   data = f.read
+   f.close
+
+   -- you open a file
+   -- use the file
+   -- and then close the file
+
+   import threading
+   lock = threading.Lock()
+   lock.acquire()
+   print("Do something")
+   lock.release()
+
+   -- you acquire a lock
+   -- do something 
+   -- release the lock
+
+-- this is the problem: what happens:
+
+   1. If we don't close the file or release the lock -- the resource gets wasted
+   2. Some error occurs before closing the file or releasing the lock and the program exits -- the resource gets wasted.
+
+-- The common pattern to avoid the above problew: use with clause
+
+   with open('filename') as f:
+     data = f.read()
+
+
+   >>> lock = threading.Lock()
+   >>> with lock:
+   ...    print("Do something")
+   ... 
+
+-- with clause takes care of cleaning up the resource 
+
+   -- we don't have to close the file or release the lock.
+
+-- It is worth knowing how with clause works under the covers
+
+   -- that can used to make with work with our custom objects.
+
+   -- so we are looking it is 'Context Manager'
+
+   -- what drives that with statement
+
+      -- is a pair of __enter__ and __exit__ special methods
+
+   -- refer manager.py
+
+   -- Since the __enter__ and __exit__ methods are implementer for the Manager class
+
+      -- the with statement can be used with the instances of the Manager class
+
+      >>> from manager import Manager
+      >>> m = Manager()
+      >>> with m:
+      ...     print("Hello World")
+      ...     
+      Entering
+      Hello World
+      Exiting
+      None None None
+
+
+      Code that is used within the with clause is bracketed between the entering and exiting methods.
+
+   -- the idea is both __enter__ and __exit__ methods could do some bookeeping work.
+
+      -- like __exit__ could release a lock or close a file.
+
+   -- Notice that the enter methods returns a value
+
+      -- this is what drives the as clause like so:
+
+      >>> with m as val:
+      ...     print("Hello World, val = ", val)
+      ...     
+      Entering
+      Hello World, val =  some value
+      Exiting
+      None None None
+
+
+      -- similar to how we normally use open on files 
+
+      >>> from manager import Manager
+      >>> with Manager() as val:
+      ...     print("Hello World, val = ", val)
+      ...     
+      Entering
+      Hello World, val =  some value
+      Exiting
+
+
+      -- what is stored in val above is the return value of the __enter__ method
+
+   -- the exit method takes three parameters
+
+      if an exception occurs: the exception type, value and traceback is stored in these parameters.
+
+
