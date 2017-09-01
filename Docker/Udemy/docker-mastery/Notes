@@ -169,4 +169,35 @@ General Steps:
          2. # docker container rm -f <id>
 
 
+5. Container vs VM
+==================
+
+-- Containers are processes and not mini-VMs
+
+-- # docker container run --name mongod -d mongo
+
+   # docker container ls
+   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+   57569c812759        mongo               "docker-entrypoint..."   10 seconds ago      Up 9 seconds        27017/tcp           mongod
+
+   # ps aux
+
+   -- This should show that mongod is just a process that runs on your system
+
+   vboxadd   3914  1.0  1.2 948684 65280 ?        Ssl  10:13   0:00 mongod
+
+   -- this can be verified if you do 
+
+   # docker container top mongod
+   UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+   vboxadd             3914                3897                0                   10:13               ?                   00:00:00            mongod
+
+
+   -- Stop the docker container and we should not see the process on Linux 
+
+   # docker container stop mongod
+
+   -- to start the stopped container
+
+   # docker containe start mongod
 
