@@ -201,3 +201,13 @@ General Steps:
 
    # docker containe start mongod
 
+6. Docker docs
+==============
+-- Online: docs.docker.com
+
+-- cmdline: docker --help
+
+
+7. Assignment
+=============
+-- pass environment variable to a container using -e option
