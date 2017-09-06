@@ -211,3 +211,19 @@ General Steps:
 7. Assignment
 =============
 -- pass environment variable to a container using -e option
+
+-- Display the images
+
+   -- # docker image ls
+
+8. What is going on in Container
+===============================
+
+# docker container top -- processes running inside the container
+
+# docker container inspect -- displays the configurations used to start the container and the metadata about the container
+                           -- does not display the running stats of the container.
+
+# docker container stats -- display live performance data about containers
+                         -- if no name is specified, stats of all containers is displayed.
+
