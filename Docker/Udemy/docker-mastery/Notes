@@ -227,3 +227,64 @@ General Steps:
 # docker container stats -- display live performance data about containers
                          -- if no name is specified, stats of all containers is displayed.
 
+
+9. Getting a shell inside containers: No SSH needed
+===================================================
+
+-- # docker container run -it 
+
+   -- start new container interactively
+   -- -i --> for interacting with the terminal
+   -- -t --> opens a terminal
+   
+   eg: docker container run -it --name proxy1 nginx bash
+
+   -- The option after the image name is the command that needs to run when the container runs. In the example it is bash
+   -- -it instructs the docker to interact with bash in a new pseudo terminal
+   -- If no option is specified, the default command for the container starts. In nginx case, the daemon "nginx -g 'daemon ..." 
+   -- If command that is started is a daemon, the container will not exit
+   -- But if the command like bash, if we exit bash --> The container also exits
+   -- This means, a container runs as long as the command which started it runs
+
+   -- If the stopped container is started again:
+
+   # docker container start proxy1
+
+   then it would start the command 'bash' which originally started it. But will not allow you to interact with it, because no -it option was used.
+
+   -- when you start a stopped container with interactivity use -at option
+   # docker container start -ai ubuntu
+
+-- How to run additonal processes in a running container
+
+   docker container exec
+
+   eg: # docker container exec -it mysql bash
+
+   -- This would run a new process bash in this case inside the container. # check ps aux command
+
+   -- If you exit from bash, the container will not exit, as the command which started(mysql) it is still running.
+   
+
+-- docker pull <image>
+
+   -- pull image from docker hub
+
+
+-- docker image ls
+
+   -- list images that is available locally
+
+-- what happens if you try to run the following command:
+
+   # docker container run --name alpine_os -it alpine bash
+
+   -- it will start the container and try to execute the bash command. Does not find the command and throws an error as the bash command is not part of the alpine image. Instead of bash, sh is packaged as part of the alpine package
+
+   So,
+
+   # docker container run --name alpine_os -it alpine sh
+
+   -- This should give you the sh prompt
+
+
