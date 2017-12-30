@@ -1,0 +1,29 @@
+1. How to pull a specific directory from Github Repository without checking out the entire repository
+-----------------------------------------------------------------------------------------------------
+
+Question: https://stackoverflow.com/questions/2425059/how-to-pull-specific-directory-with-git
+
+Ans: https://stackoverflow.com/a/43902478/1220250
+
+git init
+git remote add -f origin <url>
+git config core.sparsecheckout true
+echo <dir1>/ >> .git/info/sparse-checkout
+echo <dir2>/ >> .git/info/sparse-checkout
+echo <dir3>/ >> .git/info/sparse-checkout
+git pull origin master
+
+Example:
+
+# mkdir LifeLongLearning
+# cd LifeLongLearning
+# git init
+# git remote add -f origin https://github.com/nitin-cherian/LifeLongLearning
+# git config core.sparsecheckout true
+# echo "Python/Fluent Python - Luciano Ramalho/" > .git/info/sparse-checkout
+# git pull origin master
+
+2. Adding an existing repository to Github using command line
+-------------------------------------------------------------
+
+https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
