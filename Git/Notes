@@ -22,3 +22,8 @@ Example:
 # git config core.sparsecheckout true
 # echo "Python/Fluent Python - Luciano Ramalho/" > .git/info/sparse-checkout
 # git pull origin master
+
+2. Adding an existing repository to Github using command line
+-------------------------------------------------------------
+
+https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
