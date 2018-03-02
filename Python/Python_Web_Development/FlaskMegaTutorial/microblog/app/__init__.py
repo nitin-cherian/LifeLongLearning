@@ -6,5 +6,5 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# from . import routes   # This issame as 'from app import routes'
+# from . import routes   # This is same as 'from app import routes'
 from app import routes
