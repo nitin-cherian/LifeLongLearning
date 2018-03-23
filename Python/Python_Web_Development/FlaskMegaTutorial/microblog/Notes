@@ -1,0 +1,26 @@
+Chapter 4: Database 
+===================
+
+  4.8 Database Relationships
+  ==========================
+  
+  -- user_id(Foreign Key) in Post class can be used to retrieve the user from the User class. However there is too much work to do.
+  Flask-SQlAlchemy has simplied it by:
+  
+        posts = db.relationship('Post', backref='author', lazy='dynamic')
+  
+  backref=author - This adds a new attribute author into the the Post class. Given a post, it will return the author and given a user,
+  it will return the list of all the post associated with the user.
+  
+  lazy=dynamic - This allows to access the posts more flexibly, say 'posts after this time' or 'posts sorted by a certian criteria'. 
+  Without this parameter, no customizations are possible with respect to the list of posts it is going to return.
+  
+  4.4 Database Models
+  ===================
+  
+  1. Q. How should I declare the attribute 'body' in class Post(db.Model), if the length of the body is not definite as might 
+  be the case with a my own blog's post. Can I declare it without the size argument in db.String like so:
+
+            body = db.Column(db.String)
+            
+    A. Better to use db.Text, some databases do not like db.String if a length isn't given.
