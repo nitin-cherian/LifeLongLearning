@@ -24,3 +24,25 @@ Chapter 4: Database
             body = db.Column(db.String)
             
     A. Better to use db.Text, some databases do not like db.String if a length isn't given.
+
+
+Chapter 6: Profile Page and Avatars
+===================================
+
+  6.4 More interesting profiles
+  =============================
+  
+  -- 'default' attribute of db.Column does inserts the default value only during an insert/update. So if no insert/update is done, the
+  field will be None.
+  
+  last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+  
+  Reference: https://stackoverflow.com/questions/14002631/why-isnt-sqlalchemy-default-column-value-available-before-object-is-committed
+  
+  6.6 Profile Editor
+  ==================
+  
+  -- 'Length' validator ensures that an error is thrown when an input exceeds a certain limit. This limit ideally should match 
+  with the limit specified in the db.
+  
+  The limit that is specified in the db may not be enforced by itself in the case of sqlite DB. Other DBs may ensire this.
