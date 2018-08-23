@@ -1,0 +1,21 @@
+MongoDB Schema Design Facts
+---------------------------
+
+- Application Driven Schema
+- Rich Documents
+  - Store any array, value or entire document
+- Pre Join / Embded data
+  - Store and array, value or entire document
+- No Mongo joins
+- No constraints like foreign key constraints due to embedding
+- Atomic operations, but no transactions as in Relational DB
+- No declared Schema
+
+3rd Normal Form(3NF)
+--------------------
+
+- A non-key attribute must desscribe a fact about the key, the whole key and nothing but
+the key
+- Suppose we have a posts table where post_id is the key and it has anttribute author and
+author_email. This table is brocken and not in 3NF, because, the author_email is not 
+describing the key post_id, but another attribute 'author'.
